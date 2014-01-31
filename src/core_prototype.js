@@ -73,19 +73,6 @@ Superslides.prototype = {
     return index;
   },
 
-  _splitHash: function splitHash(hash){
-    var slash_position = hash.indexOf("/")
-    if (slash_position != -1){
-        var subpage = hash.substr(slash_position + 1);
-        var mainpage = hash.substr(0, slash_position);
-
-        return [mainpage, subpage]
-    } else {
-        return [hash, ""]
-    }
-
-  },
-  
   _parseHash: function(hash) {
     hash = hash || window.location.hash;
     hashParts = this._splitHash(hash);
@@ -97,6 +84,19 @@ Superslides.prototype = {
     }
 
     return hash;
+  },
+
+  _splitHash: function(hash){
+    var slash_position = hash.indexOf("/");
+    if (slash_position != -1){
+        var subpage = hash.substr(slash_position + 1);
+        var mainpage = hash.substr(0, slash_position);
+
+        return [mainpage, subpage];
+    } else {
+        return [hash, ""];
+    }
+
   },
 
   size: function() {
